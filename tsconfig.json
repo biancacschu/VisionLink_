@@ -12,5 +12,5 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] }
   },
-  "include": ["src", "vite.config.ts", "server/src/migrate_all.js", "server/src/seed_all.js"]
+  "include": ["src", "vite.config.ts"]
 }
