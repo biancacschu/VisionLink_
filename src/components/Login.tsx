@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login as apiLogin } from "../lib/api";
+import { apiLogin } from "../lib/api"; 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -8,7 +8,8 @@ import { Separator } from "./ui/separator";
 import { Eye, EyeOff, Palette } from "lucide-react";
 
 interface LoginProps {
-  onLogin?: () => void;
+  // onLogin no longer accepts a token argument
+  onLogin: () => void; 
 }
 
 export function Login({ onLogin }: LoginProps) {
@@ -23,10 +24,16 @@ export function Login({ onLogin }: LoginProps) {
     setErr(null);
     setIsLoading(true);
     try {
-      await apiLogin(email, password); // stores token internally
-      onLogin?.();
+      const data = await apiLogin(email, password); // token is stored in apiLogin
+      
+      // CRITICAL: Check if a token was received and call the parent handler
+      if (data?.token) { 
+        onLogin(); // Call parent to update state and navigate
+      } else {
+        throw new Error("Login successful, but token missing from response.");
+      }
     } catch (e: any) {
-      setErr(e?.message || "Login failed");
+      setErr(e?.message || "Login failed (API Error)");
     } finally {
       setIsLoading(false);
     }
