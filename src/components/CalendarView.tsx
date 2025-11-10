@@ -63,8 +63,7 @@ export default function CalendarView() {
     { name: 'July', value: 6 }, { name: 'August', value: 7 }, { name: 'September', value: 8 },
     { name: 'October', value: 9 }, { name: 'November', value: 10 }, { name: 'December', value: 11 }
   ];
-
-  // 💥 CHANGE: Generate a large range of years (1950 to 2050) to force scrollability
+  // Generate a large range of years (1950 to 2050) to force scrollability
   const startYear = 1950;
   const endYear = 2050;
   const years = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);

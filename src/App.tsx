@@ -8,7 +8,7 @@ import { 
   useSidebar 
 } from "./components/ui/sidebar"
 
-// NEW: Import the consolidated sidebar component
+// Import the consolidated sidebar component
 import { AppSidebar } from "./components/AppSidebar.tsx"
 
 // Imports with explicit .tsx extensions
@@ -25,7 +25,7 @@ import { Login } from "./components/Login.tsx"
 import { Profile } from "./components/Profile.tsx"
 import { StaffManager } from "./components/StaffManager.tsx"
 
-// ✅ FIX 1: Import only the necessary abstraction functions: getToken and clearToken
+// Import only the necessary abstraction functions: getToken and clearToken
 import { getToken, clearToken } from "./lib/api" 
 
 
@@ -83,7 +83,7 @@ function AuthenticatedLayout({ handleLogout }: { handleLogout: () => void }) {
 // --- 2. Main App Component ---
 export default function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    // ✅ FIX 2: Add a loading state for the authentication check
+    // Add a loading state for the authentication check
     const [isAuthChecking, setIsAuthChecking] = useState(true); 
     const navigate = useNavigate();
     
@@ -93,7 +93,7 @@ export default function App() {
         if (getToken()) { 
             setIsAuthenticated(true); 
         } 
-        // ✅ FIX 3: Once the check is complete, set the checking state to false
+        // Once the check is complete, set the checking state to false
         setIsAuthChecking(false);
     }, [])
     
@@ -111,7 +111,7 @@ export default function App() {
         navigate('/login', { replace: true });
     };
 
-    // ✅ FIX 4: Show a simple loading screen while the check is running
+    // Show a simple loading screen while the check is running
     if (isAuthChecking) {
         return (
             <div className="flex items-center justify-center min-h-screen">

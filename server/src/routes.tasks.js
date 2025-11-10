@@ -68,7 +68,7 @@ export function tasksRoutes(app) {
       
       // Use the fields array to only consider columns that exist in the DB
       fields.forEach(field => {
-        // 💥 FIX: Use Object.prototype.hasOwnProperty.call to check for key existence.
+        // Use Object.prototype.hasOwnProperty.call to check for key existence.
         // This ensures that fields with a value of `null` (like unassigning a project)
         // are correctly included in the `validUpdates` object.
         if (Object.prototype.hasOwnProperty.call(updates, field)) {

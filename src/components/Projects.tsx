@@ -1,12 +1,11 @@
 ﻿import { useEffect, useState, useMemo, useCallback } from "react";
-// ⬅️ FIX: Added apiDelete to imports
+// Added apiDelete to imports
 import { apiGet, apiPost, apiPut, apiDelete } from "../lib/api"; 
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-// Trash2 icon is typically used for delete, but will stick to lucide-react imports used previously.
 import { Folder, X, RefreshCw } from "lucide-react"; 
 
 // --- Type Definitions ---
@@ -135,7 +134,7 @@ export default function Projects() {
     }
   }, [projects, loadProjectsAndClients]);
 
-  // ⬅️ FIX: New Delete Handler
+  // Delete Handler
   const handleDeleteProject = useCallback(async (projectId: number) => {
     if (!window.confirm("Are you sure you want to permanently delete this project? This action cannot be undone.")) {
         return;

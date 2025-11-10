@@ -5,15 +5,13 @@ const API_BASE =
 export const TOKEN_KEY = "auth_token"; // This key is the source of truth
 
 export function setToken(token: string) {
-  // Uses sessionStorage (correct for persistence across refresh in private tab)
+  // Uses sessionStorage (correct for persistence across refresh)
   sessionStorage.setItem(TOKEN_KEY, token);
 }
 export function getToken(): string | null {
-  // Uses sessionStorage
   return sessionStorage.getItem(TOKEN_KEY);
 }
 export function clearToken() {
-  // Uses sessionStorage
   sessionStorage.removeItem(TOKEN_KEY);
 }
 
@@ -52,7 +50,7 @@ export const apiPost =   <T,>(path: string, body?: unknown) => request<T>(path
 export const apiPut =    <T,>(path: string, body?: unknown) => request<T>(path, { method: "PUT",  body: JSON.stringify(body ?? {}) });
 export const apiDelete = <T,>(path: string) => request<T>(path, { method: "DELETE" });
 
-// apiLogin stores the token internally using setToken (which now uses sessionStorage)
+// apiLogin stores the token internally using setToken
 export async function apiLogin(email: string, password: string) {
   const data = await apiPost<{ token?: string; user?: any }>(`/auth/login`, { email, password });
   // CRITICAL: Save the token immediately upon successful login response

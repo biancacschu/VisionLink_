@@ -67,3 +67,15 @@ src/lib/api.ts
 vite.config.ts
 README-SETUP.md
 ```
+
+## Post-Deliverable 4 ChangeLog
+
+URL-base Client-side Routing
+Authentication Persists after refresh in same Tab
+Added features/mockup for Calendar
+
+Updated and fixed CRUD for:
+- Authentication
+- Tasks
+- Projects
+- Clients
