@@ -1,10 +1,8 @@
 // server/src/routes.updates.js
 import { all, run } from "./db.js";
-// If you want this protected, uncomment the next line and add requireAuth to the GET route.
 // import { requireAuth } from "./auth.js";
 
 export function updatesRoutes(app) {
-  // Public by default; add requireAuth as second arg if you want it protected
   app.get("/api/updates", async (_req, res) => {
     try {
       const rows = await all(
